@@ -28,9 +28,7 @@ db.mongoose
         process.exit();
     });
 
-app.get("/", (req,res) =>{
-    res.json({ message:"hello world"})
-})
+
 
 //set port and listen for requests
 
