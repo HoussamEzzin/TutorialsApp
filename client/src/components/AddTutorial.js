@@ -2,27 +2,29 @@ import React, {useState} from "react";
 import TutorialService from "../services/TutorialService";
 
 const AddTutorial = () => {
-    const initialTutorialState = {
+    const initialTutorialState = [{
         id:null,
         title:"",
         description:"",
         published:false
-    };
+    }];
 
-    const {tutorial, setTutorial} = useState(initialTutorialState);
-    const {submitted, setSubmitted} = useState(false);
+    const [tutorial, setTutorial] = useState(initialTutorialState);
+    const [submitted, setSubmitted] = useState(false);
 
     const handleInputChange = event =>{
         const {name, value} = event.target;
         setTutorial({...tutorial, [name]: value});
     };
 
+
+
     const saveTutorial = () =>{
         let data= {
             title: tutorial.title,
             description: tutorial.description
         };
-
+        console.log("data :"+data);
         TutorialService.create(data)
             .then(response =>{
                 setTutorial({
